@@ -1,5 +1,5 @@
 fn main() {
-    let nums: Vec<i32> = vec! [3,3];
+    let nums: Vec<i32> = vec! [3,2,4];
     let target: i32 = 6;
     let result: Vec<i32> = two_sum(nums, target);
     println!("{:?}", result);
@@ -13,13 +13,8 @@ fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
     for i in 0..nums.len() {
         let b = target - nums[i];
-        let mut nums2: Vec<i32> = Vec::new();
-        nums2 = nums.clone();
-        nums2.remove(i);
-
-        if nums2.contains(&b){
+        if nums[..i].contains(&b) || nums[i+1..].contains(&b){
             result.push(i as i32);
-     
         }
     }
     return result;
